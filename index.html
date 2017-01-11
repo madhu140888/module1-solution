@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myFirstApp">
+  <head>
+    <meta charset="utf-8">
+    <title>My first Angular JS app</title>
+    <!--The browser reads HTML files sequentially and that means
+    <script> inclusion should be carefully used based on our preference so that which js needs to be executed first. -->
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h1>My First Angular JS app</h1>
+    <!-- no-controller attribute links the controller defined in app.js to this <div> - example for viewModel-->
+       <div ng-controller = "myFirstController">
+         Comma separated List: <input type="text"
+                        ng-model="name"><br>
+
+         <div>
+           <button ng-click="checkQty()">Check If Too Much</button>
+           <br>
+           {{listMsg}}
+         </div>
+         <!--sayHello is a function defined in $scope in app.js -->
+         <!--name is also part of scope ($ - this sign defines angular js preserved variables) -->
+       </div>
+  </body>
+</html>
