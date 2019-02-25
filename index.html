@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myFirstApp">
+<html ng-app="LunchCheck">
   <head>
     <meta charset="utf-8">
     <title>My first Angular JS app</title>
@@ -10,15 +10,16 @@
   </head>
   <body>
     <h1>My First Angular JS app</h1>
-    <!-- no-controller attribute links the controller defined in app.js to this <div> - example for viewModel-->
-       <div ng-controller = "myFirstController">
+    <!-- ng-controller attribute links the controller defined in app.js to this <div> - example for viewModel-->
+       <div ng-controller = "LunchCheckController">
          Comma separated List: <input type="text"
-                        ng-model="name"><br>
+                        ng-model="name" style="border-color:{{textColor}}"><br>
 
          <div>
            <button ng-click="checkQty()">Check If Too Much</button>
            <br>
-           {{listMsg}}
+           <p style="color:{{textColor}};">{{listMsg}}</p>
+           Do NOT consider and empty item, i.e., , , as an item towards to the count!
          </div>
          <!--sayHello is a function defined in $scope in app.js -->
          <!--name is also part of scope ($ - this sign defines angular js preserved variables) -->

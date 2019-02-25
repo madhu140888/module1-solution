@@ -4,35 +4,38 @@
 //Use strict prevents this declaration and makes it undefined within this scope.
 'use strict';
 //x = "hello";
-angular.module('myFirstApp', [])
+angular.module('LunchCheck', [])
 
-.controller('myFirstController', DIController);
+.controller('LunchCheckController', lunchCheckController);
 
-DIController.$inject = ['$scope','$filter'];
-function DIController ($scope, $filter) {
+lunchCheckController.$inject = ['$scope','$filter'];
+function lunchCheckController ($scope, $filter) {
   //console.log($scope);
   $scope.name = "";
   $scope.listMsg = "";
+  $scope.textColor = "";
   $scope.checkQty = function () {
     //var splitNames = getNonEmptyNames($scope.name.split(',')); //if you don't take empty value into account
-    var splitNames = $scope.name.split(',');
+    var splitNames = getNonEmptyNames($scope.name.split(','));
     if (splitNames.length == 1 & splitNames == "") {
       $scope.listMsg = "Please enter data first";
+      $scope.textColor = "red";
     }else if (splitNames.length <= 3) {
       $scope.listMsg = "Enjoy!";
+      $scope.textColor = "green";
     }else if (splitNames.length > 3) {
       $scope.listMsg = "Too much!";
+      $scope.textColor = "green";
     }
   };
 }
 
 function getNonEmptyNames(listNames){
-  var tmpListNames = "".split(','); //initialize as an array
+  var tmpListNames = ['']; //initialize as an array
   var j=0;
   for (var i = 0; i < listNames.length; i++) {
-    if (listNames[i]!="") {
-      tmpListNames[j] = listNames[i];
-      j++;
+    if (listNames[i].trim()!="") {
+      tmpListNames[j++] = listNames[i];
     }
   }
   return tmpListNames;
